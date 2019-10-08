@@ -12,6 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Configuration to deploy release version of the Dashboard UI compatible with
+# Kubernetes 1.8.
+#
+# Example usage: kubectl create -f <this_file>
+
 # ------------------- Dashboard Secret ------------------- #
 
 apiVersion: v1
@@ -25,7 +30,6 @@ type: Opaque
 
 ---
 # ------------------- Dashboard Service Account ------------------- #
-
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -109,7 +113,7 @@ spec:
     spec:
       containers:
       - name: kubernetes-dashboard
-        image: registry.cn-hangzhou.aliyuncs.com/google_containers/kubernetes-dashboard-amd64:v1.10.1
+        image: registry.cn-hangzhou.aliyuncs.com/lwq2019/kubernetes-dashboard-amd64:v1.8.3
         ports:
         - containerPort: 8443
           protocol: TCP
